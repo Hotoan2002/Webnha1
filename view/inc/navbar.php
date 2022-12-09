@@ -27,8 +27,6 @@
                   <li><a href="login.php" class="">Login</a></li>
                     <span class="text-white">/</span>
                     <li><a href="register.php" class="">Register</a></li>
-                <?php } ?>
-              <li><a href="Account.php"> Account</a></li>
-              
+                <?php } ?>              
             </ul>  
  <!-- header end -->

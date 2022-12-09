@@ -124,7 +124,6 @@
                 <p class="text-base text-gray-400 line-through">$1200</p>
             </div>
             <p class="mt-4 text-gray-600">
-                <?php echo $product['description']; ?>
             </p>
             <!-- size filter -->
             <div class="pt-4">
@@ -247,7 +246,6 @@
         <div class="w-3/5 pt-6 ">
             <div class="text-gray-600 space-y-3">
                 <p>
-                    <?php echo $product['description']; ?>
                 </p>
             </div>
             <!-- table -->

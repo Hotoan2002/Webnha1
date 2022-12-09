@@ -1,12 +1,12 @@
 <?php
 
-require_once './core/mysql.php';
+require_once 'mysql.php';
 
 $pdo = get_pdo();
 
 //Insert order
 function insert_order($code, $status, $user_id){
-    $sql = "INSERT INTO ORDERS(ID, CODE, STATUS, USER_ID) VALUES(NULL, :code, :status, :user_id)";
+    $sql = "INSERT INTO `ORDER`(ID, CODE, STATUS, `USER_ID`) VALUES(NULL, :code, :status, :user_id)";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -19,7 +19,7 @@ function insert_order($code, $status, $user_id){
 
 //update order
 function update_order($code, $status, $user_id, $id){
-    $sql = "UPDATE ORDERS SET CODE=:code, STATUS=:status WHERE ID=:id";
+    $sql = "UPDATE `ORDER` SET CODE=:code, STATUS=:status WHERE ID=:id";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -27,7 +27,6 @@ function update_order($code, $status, $user_id, $id){
     $stmt->bindParam(':status', $status);
     $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':id', $id);
-
 
    
     $stmt->bindParam(':code', $code);
@@ -39,7 +38,7 @@ function update_order($code, $status, $user_id, $id){
 
 //delete order
 function delete_order($id){
-    $sql = "DELETE FROM ORDERS WHERE ID=:id";
+    $sql = "DELETE FROM `ORDER` WHERE ID=:id";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -50,7 +49,7 @@ function delete_order($id){
 
 //Select data
 function get_order_list(){
-    $sql = "SELECT * FROM ORDERS";
+    $sql = "SELECT * FROM `ORDER`";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -72,11 +71,12 @@ function get_order_list(){
             'user_id' => $row['user_id'],
         ));
     }
+
     return $order_list;
 }
 
 function find_order($id){
-    $sql = "SELECT * FROM ORDERS WHERE ID=:id";
+    $sql = "SELECT * FROM `ORDER` WHERE ID=:id";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -96,11 +96,12 @@ function find_order($id){
             'user_id' => $row['user_id'],
         );
     }
+
     return null;
 }
 
 function find_order_by_code($code){
-    $sql = "SELECT * FROM ORDERS WHERE CODE=:code";
+    $sql = "SELECT * FROM `ORDER` WHERE CODE=:code";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -120,6 +121,7 @@ function find_order_by_code($code){
             'user_id' => $row['user_id'],
         );
     }
+
     return null;
 }
 ?>

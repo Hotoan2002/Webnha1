@@ -89,11 +89,15 @@ function total_cart_item($price, $quantity){
     return number_format($price * $quantity, 0, '', ',');
 }
 
-function total_cart(){
-    $cart = $_SESSION['cart'];
+function total_cart()
+{
     $total = 0;
-    foreach ($cart as $order_detail) {
-        $total += $order_detail['price'] * $order_detail['quantity'];
+    if (isset($_SESSION['cart'])) {
+        $cart = $_SESSION['cart'];
+
+        foreach ($cart as $order_detail) {
+            $total += $order_detail['price'] * $order_detail['quantity'];
+        }
     }
     return number_format($total, 0, '', ',');
 }
@@ -101,21 +105,25 @@ function total_cart(){
 /**
  * Ham dem so luong product trong gio hang
  */
-function number_cart_product(){
-    $cart = $_SESSION['cart'];
+function number_cart_product()
+{
     $number = 0;
+    if (isset($_SESSION['cart'])) {
+    $cart = $_SESSION['cart'];
+  
     foreach ($cart as $order_detail) {
         $number += $order_detail['quantity'];
     }
+}
     return $number;
 }
+function string_radom($len = 10){
 
-function string_random($len = 10){
-    $keys = array_merge(range(0,9), range('a', 'z'));
-
+    $keys = array_merge(range(0,9),range('a','z'));
     $key = "";
-    for($i=0; $i < $len; $i++) {
-        $key .= $keys[mt_rand(0, count($keys) - 1)];
+    for ($i=0; $i < $len; $i++) { 
+        # code...
+        $key .=$keys[mt_rand(0,count($keys)-1)];
     }
     return $key;
 }

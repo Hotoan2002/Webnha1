@@ -1,15 +1,15 @@
 <?php
 
-require_once './core/mysql.php';
+require_once 'mysql.php';
 
 $pdo = get_pdo();
 
 //Insert order
 function insert_order_detail($product_id, $order_id, $quantity){
-    $sql = "INSERT INTO ORDERS(ID, PRODUCT_ID, ORDER_ID, QUANTITY) VALUES(NULL, :product_id, :order_id, :quantity)";
+    $sql = "INSERT INTO ORDER_DETAILS(ID, PRODUCT_ID, ORDER_ID, QUANTITY) VALUES(NULL, :product_id, :order_id, :quantity)";
     global $pdo;
     $stmt = $pdo->prepare($sql);
-    
+   
     $stmt->bindParam(':product_id', $product_id);
     $stmt->bindParam(':order_id', $order_id);
     $stmt->bindParam(':quantity', $quantity);
@@ -18,11 +18,11 @@ function insert_order_detail($product_id, $order_id, $quantity){
 }
 
 //update order
-function update_order($product_id, $order_id, $quantity){
-    $sql = "UPDATE ORDERS_DETAILS SET PRODUCT_ID=:product_id, ORDER_ID=:order_id, QUANTITY=:quantity WHERE ID=:id";
+function update_order_detail($product_id, $order_id, $quantity){
+    $sql = "UPDATE ORDER_DETAILS SET PRODUCT_ID=:product_id, ORDER_ID=:order_id, QUANTITY=:quantity WHERE ID=:id";
     global $pdo;
     $stmt = $pdo->prepare($sql);
-    
+   
     $stmt->bindParam(':product_id', $product_id);
     $stmt->bindParam(':order_id', $order_id);
     $stmt->bindParam(':quantity', $quantity);
@@ -31,8 +31,8 @@ function update_order($product_id, $order_id, $quantity){
 }
 
 //delete order
-function delete_order($id){
-    $sql = "DELETE FROM ORDERS_DETAILS WHERE ID=:id";
+function delete_order_detail($id){
+    $sql = "DELETE FROM ORDER_DETAILS WHERE ID=:id";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -42,8 +42,8 @@ function delete_order($id){
 }
 
 //Select data
-function get_order_list(){
-    $sql = "SELECT * FROM ORDERS";
+function get_order_detail_list(){
+    $sql = "SELECT * FROM ORDER_DETAILS";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -65,11 +65,12 @@ function get_order_list(){
             'quantity' => $row['quantity'],
         ));
     }
+
     return $order_list;
 }
 
-function find_order($id){
-    $sql = "SELECT * FROM ORDERS WHERE ID=:id";
+function find_order_detail($id){
+    $sql = "SELECT * FROM ORDER_DETAILS WHERE ID=:id";
     global $pdo;
     $stmt = $pdo->prepare($sql);
     
@@ -89,6 +90,7 @@ function find_order($id){
             'quantity' => $row['quantity'],
         );
     }
+
     return null;
 }
 ?>

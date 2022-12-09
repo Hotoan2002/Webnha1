@@ -22,7 +22,7 @@ function get_all_products(){
         $product_list[] = array(
             'id' => $row['id'],
             'name' => $row['name'],
-            'description' => $row['description'],
+            
             'price' => $row['price'],
             'img' => $row['img'],
             'category_id' => $row['category_id']
@@ -58,7 +58,6 @@ function get_product($id){
         return array(
             'id' => $row['id'],
             'name' => $row['name'],
-            'description' => $row['description'],
             'price' => $row['price'],
             'img' => $row['img'],
             'category_id' => $row['category_id']
@@ -92,7 +91,6 @@ function get_products_by_category($category_id){
         $product_list[] = array(
             'id' => $row['id'],
             'name' => $row['name'],
-            'description' => $row['description'],
             'price' => $row['price'],
             'img' => $row['img'],
             'category_id' => $row['category_id']
@@ -129,7 +127,6 @@ function get_products_by_name($name){
         $product_list[] = array(
             'id' => $row['id'],
             'name' => $row['name'],
-            'description' => $row['description'],
             'price' => $row['price'],
             'img' => $row['img'],
             'category_id' => $row['category_id']
@@ -165,7 +162,6 @@ function get_products_related($product_id, $category_id){
         $product_list[] = array(
             'id' => $row['id'],
             'name' => $row['name'],
-            'description' => $row['description'],
             'price' => $row['price'],
             'img' => $row['img'],
             'category_id' => $row['category_id']
