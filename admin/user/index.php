@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../core1/boot.php";
+require_once "../../fonz/boot.php";
 
 if ( $_SERVER[ 'REQUEST_METHOD' ] === "POST" ){
 

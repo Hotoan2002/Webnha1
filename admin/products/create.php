@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $price = $_POST['price'];
   
     $category_id = $_POST['category_id'];
-    insert_product($name, $img, $category_id,$price);
 
     header('Location: index.php');
 }
